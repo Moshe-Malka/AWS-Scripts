@@ -6,7 +6,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::glue:startJobRun.sync",
       "Parameters": {
-        "JobName": "Do-Nothing-Job",
+        "JobName": "<FILL_THIS>",
         "Arguments": {
           "--tables.$" : "$.tables",
           "--dump_path.$" : "$.dump_path"
