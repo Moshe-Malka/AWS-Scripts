@@ -1,0 +1,27 @@
+{
+  "Comment": "Step function to run a Glue job",
+  "StartAt": "Run-Glue-Job",
+  "States": {
+    "Run-Glue-Job": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync",
+      "Parameters": {
+        "JobName": "Do-Nothing-Job",
+        "Arguments": {
+          "--tables.$" : "$.tables",
+          "--dump_path.$" : "$.dump_path"
+        }
+      },
+      "Next": "Send-SNS-Message"
+    },
+    "Send-SNS-Message": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:us-west-2:458558152824:MyTopic",
+        "Message": "Done Processing Tables"
+      },
+     "End": true
+    }
+  }
+}
