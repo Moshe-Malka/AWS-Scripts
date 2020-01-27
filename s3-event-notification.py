@@ -46,3 +46,30 @@ def unset_notification(_id, _type):
         bucket_notification.load()
     except Exception as e:
         print(f"Failed to unset queue notification : {e}")
+
+
+
+"""
+Example Queue Notification:
+
+[
+    {
+        'Id': 'string',
+        'QueueArn': 'string',       #should by 'LambdaFunctionArn' for Lambda notification or 'TopicArn' for SNS notification.
+        'Events': [
+            's3:ReducedRedundancyLostObject'|'s3:ObjectCreated:*'|'s3:ObjectCreated:Put'|'s3:ObjectCreated:Post'|'s3:ObjectCreated:Copy'|'s3:ObjectCreated:CompleteMultipartUpload'|'s3:ObjectRemoved:*'|'s3:ObjectRemoved:Delete'|'s3:ObjectRemoved:DeleteMarkerCreated'|'s3:ObjectRestore:*'|'s3:ObjectRestore:Post'|'s3:ObjectRestore:Completed'|'s3:Replication:*'|'s3:Replication:OperationFailedReplication'|'s3:Replication:OperationNotTracked'|'s3:Replication:OperationMissedThreshold'|'s3:Replication:OperationReplicatedAfterThreshold',
+        ],
+        'Filter': {
+            'Key': {
+                'FilterRules': [
+                    {
+                        'Name': 'prefix'|'suffix',
+                        'Value': 'string'
+                    },
+                ]
+            }
+        }
+    }
+]
+
+"""
