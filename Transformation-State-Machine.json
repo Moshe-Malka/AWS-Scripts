@@ -18,7 +18,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:us-west-2:458558152824:MyTopic",
+        "TopicArn": "arn:aws:sns:us-west-2:<FILL_THIS>:MyTopic",
         "Message": "Done Processing Tables"
       },
      "End": true
