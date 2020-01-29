@@ -12,7 +12,6 @@ def set_queue_notification(conf):
     except Exception as e:
         print(f"Failed to set queue notification : {e}")
 
-
 def set_topic_notification(conf):
     try:
         response = s3_resource.BucketNotification(bucket_name).put(NotificationConfiguration={'TopicConfigurations' : conf})
